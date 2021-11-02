@@ -28,6 +28,7 @@ class FirstPage extends StatelessWidget{
           ),
           onTap: (){
             //タップ処理
+            Get.toNamed("/SignUp");
           },
         ),
         SizedBox(height: 70.0),
@@ -46,6 +47,7 @@ class FirstPage extends StatelessWidget{
           ),
           onTap: (){
             //タップ処理
+            Get.toNamed("/Login");
           },
         ),
       ])
