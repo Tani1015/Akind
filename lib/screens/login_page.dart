@@ -18,6 +18,7 @@ class LoginPage extends StatelessWidget{
     final products = Get.put(Login_Product());
 
     return Scaffold(
+      // backgroundColor: Color.fromRGBO(, , , 1),
       body: SingleChildScrollView(
         child: Expanded(
           flex: 1,
@@ -27,7 +28,7 @@ class LoginPage extends StatelessWidget{
 
               child: Column(
                 children: <Widget> [
-
+                  SizedBox(height: 70),
                   //画像配置
                   Center(
                     child:Container(
@@ -49,7 +50,7 @@ class LoginPage extends StatelessWidget{
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 35.0,
-                          letterSpacing: 2
+                          letterSpacing: 0.5
                         ),
                       ),
                     ),
@@ -73,7 +74,7 @@ class LoginPage extends StatelessWidget{
                   ),
 
                   SizedBox(
-                    height: height * 0.04,
+                    height: height * 0.025,
                   ),
                   FadeAnimation(
                     delay: 1,
