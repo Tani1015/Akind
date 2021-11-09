@@ -22,9 +22,9 @@ class LoginPage extends StatelessWidget{
       body: SingleChildScrollView(
         child: Expanded(
           flex: 1,
-            child:SizedBox(
-              width: weight,
-              height: height,
+            // child:SizedBox(
+            //   width: weight,
+            //   height: height,
 
               child: Column(
                 children: <Widget> [
@@ -100,7 +100,6 @@ class LoginPage extends StatelessWidget{
               ),
             )
         ),
-      ),
-    );
+      );
   }
 }
