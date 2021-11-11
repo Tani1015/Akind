@@ -32,6 +32,7 @@ dependencies:
   get:
   simple_animations: ^4.0.0
   supercharged:
+  sign_button:
 
 dev_dependencies:
   flutter_test:
