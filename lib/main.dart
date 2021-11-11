@@ -6,6 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:akindo/screens/first_page.dart';
 import 'screens/login_page.dart';
 import 'screens/signup_page.dart';
+import 'providers/routes/get_routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,10 +20,7 @@ class MyApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
 
       //route管理
-      getPages: [
-        GetPage(name: '/Login', page: () => LoginPage()),
-        GetPage(name: '/SignUp', page: () => SignUpPage())
-      ],
+      getPages: GetRoutes.pages,
 
       home: FirstPage(),
     );
