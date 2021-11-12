@@ -19,6 +19,7 @@ class LoginPage extends StatelessWidget{
 
     return Scaffold(
       // backgroundColor: Color.fromRGBO(, , , 1),
+      backgroundColor: Color.fromRGBO(235,177,243,1),
       body: SingleChildScrollView(
         child: Expanded(
           flex: 1,
@@ -30,9 +31,9 @@ class LoginPage extends StatelessWidget{
                 children: <Widget> [
                   SizedBox(height: 70),
                   //画像配置
-                  Center(
+                  FadeAnimation(
+                    delay: 1,
                     child:Container(
-
                       width: 330,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
@@ -43,7 +44,7 @@ class LoginPage extends StatelessWidget{
 
                   //以下フェードインアニメーション　ログイン文字
                   FadeAnimation(
-                    delay: 1,
+                    delay: 2,
                     child:Container(
                       margin: const EdgeInsets.only(right: 230.0),
                       child: Text("ログイン",
@@ -62,12 +63,12 @@ class LoginPage extends StatelessWidget{
 
 
                   FadeAnimation(
-                    delay: 1,
+                    delay: 2,
                     child: Container(
                       margin: const EdgeInsets.only(right: 150.0),
                       child: Text("ユーザ情報を入力してください",
                           style: TextStyle(
-                              letterSpacing: 0.5
+  :@                            letterSpacing: 0.5
                           ),
                       ),
                     ),
@@ -77,10 +78,10 @@ class LoginPage extends StatelessWidget{
                     height: height * 0.025,
                   ),
                   FadeAnimation(
-                    delay: 1,
+                    delay: 3,
                     child: Container(
-                      width: weight * 0.9,
-                      height: height * 0.071,
+                      width: weight * 0.7,
+                      height: height * 0.061,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         color: products.selected == Gender.Email ? products.enabled : products.background,

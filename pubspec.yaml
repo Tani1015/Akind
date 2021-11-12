@@ -49,6 +49,7 @@ flutter:
   uses-material-design: true
   assets:
     - images/akind.jpg
+    - images/logo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
@@ -67,6 +68,9 @@ flutter:
     - family: font2
       fonts:
         - asset: assets/fonts/LightNovelPOPv2.otf
+    - family: font3
+      fonts:
+      - asset: assets/fonts/KaiseiDecol.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

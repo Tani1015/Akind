@@ -29,7 +29,7 @@ class FirstPage extends StatelessWidget{
                 width: 330,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.asset('images/akind.jpg'),
+                  child: Image.asset('images/logo.png'),
                 ),
               ),
             ),
@@ -44,10 +44,12 @@ class FirstPage extends StatelessWidget{
                   color: Color.fromRGBO(136 , 255, 227, 1),
                   elevation: 8.0,
                   child: Center(
-                    child: Text("ユーザとうろく",
+                    child: Text("ユーザ登録",
                         style: TextStyle(
-                          fontFamily: "font",
+                          fontFamily: "font3",
                           fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(87, 93, 107, 1)
                         )),
                   ),
                 ),
@@ -71,9 +73,10 @@ class FirstPage extends StatelessWidget{
                   child: Center(
                     child: Text("ログイン",
                         style: TextStyle(
-                          fontFamily: "font",
-                          fontSize: 17,
-                          // fontWeight: FontWeight.bold
+                          fontFamily: "font3",
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromRGBO(87, 93, 100, 1)
                         )),
                   ),
                 ),
