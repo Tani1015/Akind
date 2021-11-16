@@ -19,7 +19,9 @@ class LoginPage extends StatelessWidget{
     final products = Get.put(Login_Product());
 
     return Scaffold(
+      
       backgroundColor: Color.fromRGBO(235, 177, 243, 1),
+
       body: SingleChildScrollView(
         child: Expanded(
           flex: 1,
@@ -34,8 +36,10 @@ class LoginPage extends StatelessWidget{
                   FadeAnimation(
                     delay: 1,
                     child:Container(
+              
 
                       width: 230,
+
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image.asset('images/akind.jpg'),
@@ -69,7 +73,7 @@ class LoginPage extends StatelessWidget{
                       margin: const EdgeInsets.only(right: 146.0),
                       child: Text("ユーザ情報を入力してください",
                           style: TextStyle(
-                              letterSpacing: 0.5
+  :@                            letterSpacing: 0.5
                           ),
                       ),
                     ),
@@ -82,8 +86,8 @@ class LoginPage extends StatelessWidget{
                   FadeAnimation(
                     delay: 3,
                     child: Container(
-                      width: weight * 0.9,
-                      height: height * 0.071,
+                      width: weight * 0.7,
+                      height: height * 0.061,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
                         color: products.selected == Gender.Email ? products.enabled : products.background,
