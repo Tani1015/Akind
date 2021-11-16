@@ -19,13 +19,18 @@ class Login_Product extends GetxController{
   this.enabled = Colors.blueGrey,
   this.enabledtxt = Colors.white,
   this.background = Colors.grey,
-  this.deaible = Colors.lightGreen,
+  this.deaible = Colors.black,
   this.password = true,
   });
 
 
   void emailselect() {
     this.selected = Gender.Email;
+    update();
+  }
+
+  void passwordselect() {
+    this.password = !this.password;
     update();
   }
 
