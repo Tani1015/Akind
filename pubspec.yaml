@@ -33,6 +33,7 @@ dependencies:
   simple_animations: ^4.0.0
   supercharged:
   sign_button:
+  bottom_navy_bar:
 
 dev_dependencies:
   flutter_test:

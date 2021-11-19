@@ -21,9 +21,7 @@ class LoginPage extends StatelessWidget{
     return Scaffold(
       backgroundColor: Color.fromRGBO(235, 177, 243, 1),
       body: SingleChildScrollView(
-        child: Expanded(
-          flex: 1,
-            child:SizedBox(
+          child:SizedBox(
               width: weight,
               height: height,
 
@@ -150,7 +148,9 @@ class LoginPage extends StatelessWidget{
                   FadeAnimation(
                       delay: 4,
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed("/Routes");
+                        },
                         child: Text("ログイン",style: TextStyle(
                           color: Colors.black,letterSpacing: 0.5,
                           fontSize: 20.0,
@@ -165,7 +165,7 @@ class LoginPage extends StatelessWidget{
                         ),
                       )
                   ),
-                  SizedBox(height: height * 0.06,),
+                  SizedBox(height: height * 0.05,),
                   FadeAnimation(delay: 5,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -198,17 +198,23 @@ class LoginPage extends StatelessWidget{
                           Text("アカウントを持っていない方 ", style: TextStyle(
                             color: Colors.black,
                             letterSpacing: 0.5, 
-                              decoration: TextDecoration.underline,
-                              decorationThickness: 3
+                              // decoration: TextDecoration.underline,
+                              // decorationThickness: 3
+                          )),
+                          Text(" ー＞ ", style: TextStyle(
+                              color: Colors.black,
+                              letterSpacing: 0.5,
                           )),
                           GestureDetector(
                             onTap: (){
                               Get.toNamed('/SignUp');
                             },
-                            child: Text(" -> 登録",style: TextStyle(
+                            child: Text("登録",style: TextStyle(
                               color: Colors.black.withOpacity(0.8),
                               fontWeight: FontWeight.bold,
                               letterSpacing: 0.5,
+                                decoration: TextDecoration.underline,
+                                decorationThickness: 3
                             )),
                           )
                         ],
@@ -218,7 +224,6 @@ class LoginPage extends StatelessWidget{
               ),
             )
         ),
-      ),
-    );
+      );
   }
 }

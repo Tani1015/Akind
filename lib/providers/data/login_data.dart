@@ -30,7 +30,7 @@ class Login_Product extends GetxController{
   }
 
   void passwordselect() {
-    this.password = !this.password;
+    password = !password;
     update();
   }
 
