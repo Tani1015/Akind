@@ -12,15 +12,15 @@ class Login_Product extends GetxController{
   final Color enabledtxt;
   final Color background;
   final Color deaible;
-  bool password;
+  RxBool password = true.obs;
   Gender? selected;
+  final textcontroller = TextEditingController();
 
   Login_Product({
   this.enabled = Colors.blueGrey,
   this.enabledtxt = Colors.white,
   this.background = Colors.grey,
   this.deaible = Colors.black,
-  this.password = true,
   });
 
 
@@ -29,9 +29,6 @@ class Login_Product extends GetxController{
     update();
   }
 
-  void passwordselect() {
-    password = !password;
-    update();
-  }
+
 
 }

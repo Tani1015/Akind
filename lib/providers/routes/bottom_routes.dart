@@ -3,17 +3,17 @@ import 'package:akindo/screens/home_page.dart';
 import 'package:akindo/screens/listing_page.dart';
 import 'package:akindo/screens/recommend_page.dart';
 import 'package:akindo/screens/search_page.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
 class BottomRoutes extends StatelessWidget{
 
-  var bottomNavigationItem = [
-    BottomNavyBarItem(icon: Icon(Icons.update), title: Text('おすすめ')),
-    BottomNavyBarItem(icon: Icon(Icons.search_outlined), title: Text('探す')),
-    BottomNavyBarItem(icon: Icon(Icons.add), title: Text('出品')),
-    BottomNavyBarItem(icon: Icon(Icons.home), title: Text('ホーム'))
+  var floatingNavigationItem = [
+    DotNavigationBarItem(icon: Icon(Icons.update),selectedColor: Colors.redAccent),
+    DotNavigationBarItem(icon: Icon(Icons.search_outlined), selectedColor: Colors.redAccent),
+    DotNavigationBarItem(icon: Icon(Icons.add), selectedColor: Colors.redAccent),
+    DotNavigationBarItem(icon: Icon(Icons.home), selectedColor: Colors.redAccent)
   ];
 
   @override
@@ -30,10 +30,12 @@ class BottomRoutes extends StatelessWidget{
                 HomePage()
               ],
             ),
-          bottomNavigationBar: BottomNavyBar(
-            selectedIndex: controller.tappedIndex,
-            onItemSelected: controller.changeTabIndex,
-            items: bottomNavigationItem,
+          extendBody: true,
+          bottomNavigationBar: DotNavigationBar(
+            currentIndex: controller.tappedIndex,
+            onTap: controller.changeTabIndex,
+            items: floatingNavigationItem,
+            dotIndicatorColor: Colors.redAccent,
           )
         );
       }

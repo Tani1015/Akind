@@ -12,9 +12,9 @@ class BottomRoutes_Binding extends Bindings{
   @override
   void dependencies() {
     Get.lazyPut<RouteController>(() => RouteController());
-    // Get.lazyPut<HomeController>(() => HomeController());
-    // Get.lazyPut<ListingController>(() => ListingController());
-    // Get.lazyPut<RecommendController>(() => RecommendController());
-    // Get.lazyPut<SearchController>(() => SearchController());
+    Get.lazyPut<HomeController>(() => HomeController());
+    Get.lazyPut<ListingController>(() => ListingController());
+    Get.lazyPut<RecommendController>(() => RecommendController());
+    Get.lazyPut<SearchController>(() => SearchController());
   }
 }

@@ -15,15 +15,16 @@ class SignUp_Product extends GetxController{
   final Color enabledtxt;
   final Color background;
   final Color deaible;
-  bool password;
+  RxBool password = true.obs;
+  RxBool confpassword = true.obs;
   Gender? selected;
+  final passtextController = TextEditingController();
 
   SignUp_Product({
     this.enabled = Colors.blueGrey,
     this.enabledtxt = Colors.white,
     this.background = Colors.grey,
     this.deaible = Colors.black,
-    this.password = true,
   });
 
   void nameselect() {
@@ -47,14 +48,11 @@ class SignUp_Product extends GetxController{
     update();
   }
 
-  void passwordselect() {
-    password = !password;
-    update();
-  }
-
   void confpassselect() {
     this.selected = Gender.confirmpassword;
     update();
   }
+
+
 
 }

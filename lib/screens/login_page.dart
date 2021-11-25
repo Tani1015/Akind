@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sign_button/sign_button.dart';
 
 //クラスインポート
-import 'package:akindo/component/animation/animation.dart';
+import 'package:akindo/attach//animation/animation.dart';
 import 'package:akindo/providers/data/login_data.dart';
 
 
@@ -16,7 +17,7 @@ class LoginPage extends StatelessWidget{
     final weight = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
-    final products = Get.put(Login_Product());
+    final Login_products = Get.put(Login_Product());
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(235, 177, 243, 1),
@@ -84,24 +85,24 @@ class LoginPage extends StatelessWidget{
                       height: height * 0.071,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.0),
-                        color: products.selected == Gender.Email ? products.enabled : products.background,
+                        color: Login_products.selected == Gender.Email ? Login_products.enabled : Login_products.background,
                       ),
                       padding: const EdgeInsets.all(8.0),
                       child: TextField(
                         onTap: () {
-                          products.emailselect();
+                          Login_products.emailselect();
                         },
                         decoration: InputDecoration(
                           enabledBorder: InputBorder.none,
                           border: InputBorder.none,
-                          prefixIcon: Icon(Icons.account_circle_outlined,color: products.selected == Gender.Email ? products.enabledtxt : products.deaible,),
+                          prefixIcon: Icon(Icons.account_circle_outlined,color: Login_products.selected == Gender.Email ? Login_products.enabledtxt : Login_products.deaible,),
                           hintText: 'メールか電話番号を入力してください',
                           hintStyle: TextStyle(
-                            color: products.selected == Gender.Email ? products.enabledtxt : products.deaible,
+                            color: Login_products.selected == Gender.Email ? Login_products.enabledtxt : Login_products.deaible,
                           ),
                       ),
                         style: TextStyle(
-                          color: products.selected == Gender.Email ? products.enabledtxt : products.deaible,
+                          color: Login_products.selected == Gender.Email ? Login_products.enabledtxt : Login_products.deaible,
                           fontWeight: FontWeight.bold
                         ),
                       ),
@@ -116,40 +117,45 @@ class LoginPage extends StatelessWidget{
                         height: height * 0.071,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.0),
-                          color: products.selected == Gender.password ? products.enabled : products.background
+                          color: Login_products.selected == Gender.password ? Login_products.enabled : Login_products.background
                         ),
                         padding: const EdgeInsets.all(8.0),
-                        child: TextField(
+                        child: Obx(() => TextField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                           onTap: () {
-                            products.selected = Gender.password;
+                            Login_products.selected = Gender.password;
                           },
                           decoration: InputDecoration(
                             enabledBorder:  InputBorder.none,
                             border: InputBorder.none,
-                            prefixIcon: Icon(Icons.lock_open_outlined, color: products.selected == Gender.password ? products.enabledtxt : products.deaible,),
+                            prefixIcon: Icon(Icons.lock_open_outlined, color: Login_products.selected == Gender.password ? Login_products.enabledtxt : Login_products.deaible,),
                             suffixIcon: IconButton(
-                              icon: products.password ? Icon(Icons.visibility_off,color: products.selected == Gender.password ? products.enabledtxt : products.deaible,): Icon(Icons.visibility, color: products.selected == Gender.password ? products.enabledtxt : products.deaible,),
-                              onPressed: () => products.passwordselect(),
+                              icon: Login_products.password.value ? Icon(Icons.visibility_off,color: Login_products.selected == Gender.password ? Login_products.enabledtxt : Login_products.deaible,): Icon(Icons.visibility, color: Login_products.selected == Gender.password ? Login_products.enabledtxt : Login_products.deaible,),
+                              onPressed: () {
+                                Login_products.password.value = !Login_products.password.value;
+                              }
                             ),
                             hintText: 'パスワード',
                             hintStyle: TextStyle(
-                              color: products.selected == Gender.password ? products.enabledtxt : products.deaible
+                              color: Login_products.selected == Gender.password ? Login_products.enabledtxt : Login_products.deaible
                             ),
                           ),
-                          obscureText: products.password,
+                          obscureText: Login_products.password.value,
                             style: TextStyle(
-                              color: products.selected == Gender.password ? products.enabledtxt : products.deaible,
+                              color: Login_products.selected == Gender.password ? Login_products.enabledtxt : Login_products.deaible,
                               fontWeight: FontWeight.bold
                             ),
+                          ),
                         ),
-                      ),
+                      )
                   ),
                   SizedBox(height: height * 0.05),
                   FadeAnimation(
                       delay: 4,
                       child: TextButton(
                         onPressed: () {
-                          Get.toNamed("/Routes");
+                          Get.offAllNamed("/Routes");
                         },
                         child: Text("ログイン",style: TextStyle(
                           color: Colors.black,letterSpacing: 0.5,
@@ -168,14 +174,14 @@ class LoginPage extends StatelessWidget{
                   SizedBox(height: height * 0.05,),
                   FadeAnimation(delay: 5,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SignInButton.mini(
                               buttonType: ButtonType.google,
                               onPressed: () {}
                           ),
                           SignInButton.mini(
-                              buttonType: ButtonType.amazon,
+                              buttonType: ButtonType.microsoft,
                               onPressed: () {}
                           ),
                           SignInButton.mini(
@@ -207,14 +213,13 @@ class LoginPage extends StatelessWidget{
                           )),
                           GestureDetector(
                             onTap: (){
-                              Get.toNamed('/SignUp');
+                              Get.offNamed('/SignUp');
                             },
-                            child: Text("登録",style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.5,
-                                decoration: TextDecoration.underline,
-                                decorationThickness: 3
+                            child: Text("登 録",style: TextStyle(
+                                color:  const Color(0xFF0DF5E4).withOpacity(1),
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+
                             )),
                           )
                         ],

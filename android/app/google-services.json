@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "46202939357",
+    "project_id": "akind-e8f0e",
+    "storage_bucket": "akind-e8f0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46202939357:android:a04b925fc448a19360f834",
+        "android_client_info": {
+          "package_name": "com.example.akindo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46202939357-rahkbgbbc4tpcivff7flkbqt9f4jn1kl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.akindo",
+            "certificate_hash": "0d63e4826b3e99b40ef19b35b0651c0532faf4c2"
+          }
+        },
+        {
+          "client_id": "46202939357-4296svogh1i8h17f41jssqnim02slmtn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmMIgTSgiYMs7XWNnW_UkpQeGcY2-Q41A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46202939357-4296svogh1i8h17f41jssqnim02slmtn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
