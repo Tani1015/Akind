@@ -1,3 +1,4 @@
+import 'package:akindo/providers/controller/firebase_controller.dart';
 import 'package:get/get.dart';
 
 //クラスインポート
@@ -11,6 +12,7 @@ class BottomRoutes_Binding extends Bindings{
 
   @override
   void dependencies() {
+    Get.lazyPut<FirebaseController>(() => FirebaseController());
     Get.lazyPut<RouteController>(() => RouteController());
     Get.lazyPut<HomeController>(() => HomeController());
     Get.lazyPut<ListingController>(() => ListingController());

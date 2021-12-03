@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+import 'package:akindo/providers/controller/firebase_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,11 +6,16 @@ import 'package:get/get.dart';
 import 'package:sign_button/sign_button.dart';
 
 //クラスインポート
-import 'package:akindo/attach//animation/animation.dart';
+import 'package:akindo/attach/animation/animation.dart';
 import 'package:akindo/providers/data/login_data.dart';
 
 
-class LoginPage extends StatelessWidget{
+class LoginPage extends GetWidget<FirebaseController>{
+
+  TextEditingController email = TextEditingController();
+  TextEditingController pass = TextEditingController();
+  final Firebase_controller = Get.put(FirebaseController());
+
   @override
   Widget build(BuildContext context) {
 
@@ -21,7 +26,7 @@ class LoginPage extends StatelessWidget{
     final Login_products = Get.put(Login_Product());
 
     return Scaffold(
-      backgroundColor: Color.fromRGBO(235, 177, 243, 1),
+      backgroundColor: Color.fromRGBO(198, 241, 232, 1),
       body: SingleChildScrollView(
           child:SizedBox(
               width: weight,
@@ -29,58 +34,54 @@ class LoginPage extends StatelessWidget{
 
               child: Column(
                 children: <Widget> [
-                  SizedBox(height: 70),
+                  SizedBox(height: height * 0.15),
                   //画像配置
                   FadeAnimation(
                     delay: 1,
                     child:Container(
-
-                      width: 230,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset('images/akind.jpg'),
-                      ),
+                      child: Image.asset('images/icon&logo.png'),
                     ),
                   ),
-                  SizedBox(height: 10),
+
+                  SizedBox(height: 50),
 
                   //以下フェードインアニメーション　ログイン文字
-                  FadeAnimation(
-                    delay: 2,
-                    child:Container(
-                      margin: const EdgeInsets.only(right: 230.0),
-                      child: Text("ログイン",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0,
-                          letterSpacing: 0.5
-                        ),
-                      ),
-                    ),
-                  ),
+                  // FadeAnimation(
+                  //   delay: 2,
+                  //   child:Container(
+                  //     margin: const EdgeInsets.only(right: 230.0),
+                  //     child: Text("ログイン",
+                  //       style: TextStyle(
+                  //         fontWeight: FontWeight.bold,
+                  //         fontSize: 30.0,
+                  //         letterSpacing: 0.5
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  //
+                  // SizedBox(
+                  //   height: height * 0.005,
+                  // ),
+                  //
+                  // FadeAnimation(
+                  //   delay: 2,
+                  //   child: Container(
+                  //     margin: const EdgeInsets.only(right: 146.0),
+                  //     child: Text("ユーザ情報を入力してください",
+                  //         style: TextStyle(
+                  //             letterSpacing: 0.5
+                  //         ),
+                  //     ),
+                  //   ),
+                  // ),
 
                   SizedBox(
-                    height: height * 0.005,
+                    height: height * 0.03,
                   ),
 
                   FadeAnimation(
                     delay: 2,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 146.0),
-                      child: Text("ユーザ情報を入力してください",
-                          style: TextStyle(
-                              letterSpacing: 0.5
-                          ),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: height * 0.025,
-                  ),
-
-                  FadeAnimation(
-                    delay: 3,
                     child: Container(
                       width: weight * 0.9,
                       height: height * 0.071,
@@ -93,16 +94,18 @@ class LoginPage extends StatelessWidget{
                         onTap: () {
                           Login_products.emailselect();
                         },
+                        controller: email,
                         decoration: InputDecoration(
                           enabledBorder: InputBorder.none,
                           border: InputBorder.none,
                           prefixIcon: Icon(Icons.account_circle_outlined,color: Login_products.selected == Gender.Email ? Login_products.enabledtxt : Login_products.deaible,),
-                          hintText: 'メールか電話番号を入力してください',
+                          hintText: 'メール',
                           hintStyle: TextStyle(
                             color: Login_products.selected == Gender.Email ? Login_products.enabledtxt : Login_products.deaible,
                           ),
                       ),
                         style: TextStyle(
+                          fontFamily: "Font3",
                           color: Login_products.selected == Gender.Email ? Login_products.enabledtxt : Login_products.deaible,
                           fontWeight: FontWeight.bold
                         ),
@@ -112,7 +115,7 @@ class LoginPage extends StatelessWidget{
                   SizedBox(height: height * 0.02,),
 
                   FadeAnimation(
-                      delay: 3,
+                      delay: 2,
                       child: Container(
                         width: weight * 0.9,
                         height: height * 0.071,
@@ -127,6 +130,7 @@ class LoginPage extends StatelessWidget{
                           onTap: () {
                             Login_products.selected = Gender.password;
                           },
+                          controller: pass,
                           decoration: InputDecoration(
                             enabledBorder:  InputBorder.none,
                             border: InputBorder.none,
@@ -144,6 +148,7 @@ class LoginPage extends StatelessWidget{
                           ),
                           obscureText: Login_products.password.value,
                             style: TextStyle(
+                              fontFamily: "Font3",
                               color: Login_products.selected == Gender.password ? Login_products.enabledtxt : Login_products.deaible,
                               fontWeight: FontWeight.bold
                             ),
@@ -151,20 +156,21 @@ class LoginPage extends StatelessWidget{
                         ),
                       )
                   ),
-                  SizedBox(height: height * 0.05),
+                  SizedBox(height: height * 0.06),
                   FadeAnimation(
-                      delay: 4,
+                      delay: 3,
                       child: TextButton(
                         onPressed: () {
-                          Get.offAllNamed("/Routes");
+                          _login();
                         },
                         child: Text("ログイン",style: TextStyle(
-                          color: Colors.black,letterSpacing: 0.5,
+                          fontFamily: "Font3",
+                          color: Colors.white,letterSpacing: 0.5,
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold
                         ),),
                         style: TextButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(136 , 255, 227, 1),
+                          backgroundColor: Colors.grey,
                           padding: const EdgeInsets.symmetric(vertical:  10.0, horizontal: 60),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
@@ -172,10 +178,10 @@ class LoginPage extends StatelessWidget{
                         ),
                       )
                   ),
-                  SizedBox(height: height * 0.05,),
-                  FadeAnimation(delay: 5,
+                  SizedBox(height: height * 0.10,),
+                  FadeAnimation(delay: 4,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SignInButton.mini(
                               buttonType: ButtonType.google,
@@ -196,9 +202,9 @@ class LoginPage extends StatelessWidget{
                         ],
                       )
                   ),
-                  SizedBox(height: height * 0.053,),
+                  SizedBox(height: height * 0.08,),
                   FadeAnimation(
-                      delay: 6,
+                      delay: 5,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -232,234 +238,8 @@ class LoginPage extends StatelessWidget{
         ),
       );
   }
-}
-=======
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:sign_button/sign_button.dart';
 
-//クラスインポート
-import 'package:akindo/component/animation/animation.dart';
-import 'package:akindo/providers/data/login_data.dart';
-
-
-class LoginPage extends StatelessWidget{
-  @override
-  Widget build(BuildContext context) {
-
-    //端末ごとの高さと横幅を取得
-    final weight = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-
-    final products = Get.put(Login_Product());
-
-    return Scaffold(
-      
-      backgroundColor: Color.fromRGBO(235, 177, 243, 1),
-
-      body: SingleChildScrollView(
-        child: Expanded(
-          flex: 1,
-            child:SizedBox(
-              width: weight,
-              height: height,
-
-              child: Column(
-                children: <Widget> [
-                  SizedBox(height: 70),
-                  //画像配置
-                  FadeAnimation(
-                    delay: 1,
-                    child:Container(
-              
-
-                      width: 230,
-
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset('images/akind.jpg'),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-
-                  //以下フェードインアニメーション　ログイン文字
-                  FadeAnimation(
-                    delay: 2,
-                    child:Container(
-                      margin: const EdgeInsets.only(right: 230.0),
-                      child: Text("ログイン",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30.0,
-                          letterSpacing: 0.5
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: height * 0.005,
-                  ),
-
-                  FadeAnimation(
-                    delay: 2,
-                    child: Container(
-                      margin: const EdgeInsets.only(right: 146.0),
-                      child: Text("ユーザ情報を入力してください",
-                          style: TextStyle(
-  :@                            letterSpacing: 0.5
-                          ),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: height * 0.025,
-                  ),
-
-                  FadeAnimation(
-                    delay: 3,
-                    child: Container(
-                      width: weight * 0.7,
-                      height: height * 0.061,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        color: products.selected == Gender.Email ? products.enabled : products.background,
-                      ),
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        onTap: () {
-                          products.emailselect();
-                        },
-                        decoration: InputDecoration(
-                          enabledBorder: InputBorder.none,
-                          border: InputBorder.none,
-                          prefixIcon: Icon(Icons.account_circle_outlined,color: products.selected == Gender.Email ? products.enabledtxt : products.deaible,),
-                          hintText: 'メールか電話番号を入力してください',
-                          hintStyle: TextStyle(
-                            color: products.selected == Gender.Email ? products.enabledtxt : products.deaible,
-                          ),
-                      ),
-                        style: TextStyle(
-                          color: products.selected == Gender.Email ? products.enabledtxt : products.deaible,
-                          fontWeight: FontWeight.bold
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: height * 0.02,),
-
-                  FadeAnimation(
-                      delay: 3,
-                      child: Container(
-                        width: weight * 0.9,
-                        height: height * 0.071,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.0),
-                          color: products.selected == Gender.password ? products.enabled : products.background
-                        ),
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          onTap: () {
-                            products.selected = Gender.password;
-                          },
-                          decoration: InputDecoration(
-                            enabledBorder:  InputBorder.none,
-                            border: InputBorder.none,
-                            prefixIcon: Icon(Icons.lock_open_outlined, color: products.selected == Gender.password ? products.enabledtxt : products.deaible,),
-                            suffixIcon: IconButton(
-                              icon: products.password ? Icon(Icons.visibility_off,color: products.selected == Gender.password ? products.enabledtxt : products.deaible,): Icon(Icons.visibility, color: products.selected == Gender.password ? products.enabledtxt : products.deaible,),
-                              onPressed: () => products.passwordselect(),
-                            ),
-                            hintText: 'パスワード',
-                            hintStyle: TextStyle(
-                              color: products.selected == Gender.password ? products.enabledtxt : products.deaible
-                            ),
-                          ),
-                          obscureText: products.password,
-                            style: TextStyle(
-                              color: products.selected == Gender.password ? products.enabledtxt : products.deaible,
-                              fontWeight: FontWeight.bold
-                            ),
-                        ),
-                      ),
-                  ),
-                  SizedBox(height: height * 0.05),
-                  FadeAnimation(
-                      delay: 4,
-                      child: TextButton(
-                        onPressed: () {},
-                        child: Text("ログイン",style: TextStyle(
-                          color: Colors.black,letterSpacing: 0.5,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold
-                        ),),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(136 , 255, 227, 1),
-                          padding: const EdgeInsets.symmetric(vertical:  10.0, horizontal: 60),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          )
-                        ),
-                      )
-                  ),
-                  SizedBox(height: height * 0.06,),
-                  FadeAnimation(delay: 5,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SignInButton.mini(
-                              buttonType: ButtonType.google,
-                              onPressed: () {}
-                          ),
-                          SignInButton.mini(
-                              buttonType: ButtonType.amazon,
-                              onPressed: () {}
-                          ),
-                          SignInButton.mini(
-                              buttonType: ButtonType.apple,
-                              onPressed: () {}
-                          ),
-                          SignInButton.mini(
-                              buttonType: ButtonType.yahoo,
-                              onPressed: () {}
-                          ),
-                        ],
-                      )
-                  ),
-                  SizedBox(height: height * 0.053,),
-                  FadeAnimation(
-                      delay: 6,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("アカウントを持っていない方 ", style: TextStyle(
-                            color: Colors.black,
-                            letterSpacing: 0.5, 
-                              decoration: TextDecoration.underline,
-                              decorationThickness: 3
-                          )),
-                          GestureDetector(
-                            onTap: (){
-                              Get.toNamed('/SignUp');
-                            },
-                            child: Text(" -> 登録",style: TextStyle(
-                              color: Colors.black.withOpacity(0.8),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.5,
-                            )),
-                          )
-                        ],
-                      )
-                  )
-                ],
-              ),
-            )
-        ),
-      ),
-    );
+  void _login() {
+    Firebase_controller.login(email.text, pass.text);
   }
 }
->>>>>>> origin

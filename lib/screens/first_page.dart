@@ -8,8 +8,7 @@ class FirstPage extends StatelessWidget{
 
     return Scaffold(
       body: buildFirstPage(context),
-      backgroundColor: Color.fromRGBO(235,177,243,1),
-
+      backgroundColor: Color.fromRGBO(198, 241, 232, 1),
 
     );
   }

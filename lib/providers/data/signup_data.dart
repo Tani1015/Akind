@@ -18,7 +18,6 @@ class SignUp_Product extends GetxController{
   RxBool password = true.obs;
   RxBool confpassword = true.obs;
   Gender? selected;
-  final passtextController = TextEditingController();
 
   SignUp_Product({
     this.enabled = Colors.blueGrey,

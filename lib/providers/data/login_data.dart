@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +15,6 @@ class Login_Product extends GetxController{
   final Color deaible;
   RxBool password = true.obs;
   Gender? selected;
-  final textcontroller = TextEditingController();
 
   Login_Product({
   this.enabled = Colors.blueGrey,
@@ -28,7 +28,5 @@ class Login_Product extends GetxController{
     this.selected = Gender.Email;
     update();
   }
-
-
 
 }

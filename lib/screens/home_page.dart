@@ -1,15 +1,16 @@
+import 'package:akindo/providers/controller/firebase_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 //クラスインポート
 import 'package:akindo/providers/controller/home_controller.dart';
 
-class HomePage extends GetView<HomeController> {
+class HomePage extends GetWidget<FirebaseController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DEMO'),
+        title: Text('HOME'),
       ),
       body: Center(
         child: SingleChildScrollView( // SingleChildScrollViewで子ウィジェットをラップ
