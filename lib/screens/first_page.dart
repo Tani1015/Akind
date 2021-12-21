@@ -26,6 +26,7 @@ class FirstPage extends StatelessWidget{
               child:Container(
 
                 width: 330,
+
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset('images/logo.png'),
@@ -59,7 +60,7 @@ class FirstPage extends StatelessWidget{
               },
 
             ),
-            SizedBox(height: 40.0),
+            SizedBox(height: 10.0),
             GestureDetector(
               child: Container(
                 height: 50.0,
@@ -85,7 +86,33 @@ class FirstPage extends StatelessWidget{
                 Get.toNamed("/Login");
               },
             ),
-          ],
+            SizedBox(height: 10),
+            GestureDetector(
+              child: Container(
+                height: 50.0,
+                width: 300,
+                child: Material(
+                  borderRadius: BorderRadius.circular(30.0),
+                  shadowColor: Colors.black,
+                  color: Color.fromRGBO(136 , 255, 227, 1),
+                  elevation: 8.0,
+                  child: Center(
+                    child: Text("スキップ",
+                    style: TextStyle(
+                    fontFamily: "font3",
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromRGBO(87, 93, 100, 1)
+                    )),
+                ),
+              ),
+            ),
+            onTap: (){
+              //タップ処理
+              Get.toNamed("/Routes");
+
+            },
+          )],
         ));
 
   }

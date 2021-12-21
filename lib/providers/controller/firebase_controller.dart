@@ -5,8 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 //クラスインポート
 class FirebaseController extends GetxController{
   FirebaseAuth _auth = FirebaseAuth.instance;
+  // 12/21 yamaguti
 
   Rxn<User> _firebaseUser = Rxn<User>();
+  late var uid;
 
   String? get user => _firebaseUser.value!.email;
 
@@ -23,7 +25,8 @@ class FirebaseController extends GetxController{
     };
 
     await _auth.createUserWithEmailAndPassword(email: email, password: password).then((value) {
-      reference.add(userdata).then((value) => Get.offAllNamed("/Login"));
+      getID();
+      reference.doc(uid).set(userdata).then((value) => Get.offAllNamed("/Login"));
     }).catchError((onError) =>
         Get.snackbar("アカウントが作成できませんでした",onError.message),
     );
@@ -37,6 +40,13 @@ class FirebaseController extends GetxController{
 
   void signout() async{
     await _auth.signOut().then((value) => Get.offAllNamed("/Login"));
+  }
+
+  void getID(){
+    final currentuser = FirebaseAuth.instance.currentUser;
+    if(currentuser != null){
+      this.uid = currentuser.uid;
+    }
   }
 
 }

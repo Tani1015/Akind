@@ -10,6 +10,7 @@ import 'package:akindo/screens/recommend_page.dart';
 import 'package:akindo/screens/search_page.dart';
 import 'package:akindo/screens/splash_screen.dart';
 
+
 //バインディングインポート
 import 'package:akindo/providers/binding/bottom_routes_binding.dart';
 

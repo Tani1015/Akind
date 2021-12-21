@@ -28,9 +28,7 @@ class LoginPage extends GetWidget<FirebaseController>{
     return Scaffold(
       backgroundColor: Color.fromRGBO(198, 241, 232, 1),
       body: SingleChildScrollView(
-          child:SizedBox(
-              width: weight,
-              height: height,
+
 
               child: Column(
                 children: <Widget> [
@@ -235,8 +233,8 @@ class LoginPage extends GetWidget<FirebaseController>{
                 ],
               ),
             )
-        ),
-      );
+        )
+      ;
   }
 
   void _login() {
