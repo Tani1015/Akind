@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:akindo/logo_icons.dart';
+import 'package:akindo/providers/controller/listing_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:image_picker/image_picker.dart';
 
-class ListingPage extends StatelessWidget{
+class ListingPage extends GetWidget<ListingController>{
   @override
   Widget build(BuildContext context) {
 
@@ -31,11 +33,8 @@ class ListingPage extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextButton(
-                        onPressed:() async {
-                          final picker = ImagePicker();
-                          final pickedFile = await picker.getImage(source: ImageSource.camera);
-                          final File file = File(pickedFile!.path);
-
+                        onPressed:(){
+                          controller.camera();
                         },
                         child: Column(
                           children:<Widget> [
@@ -46,10 +45,8 @@ class ListingPage extends StatelessWidget{
                     ),
                     //TextButton(onPressed: onPressed, child: child)
                     TextButton(
-                        onPressed: ()async{
-                          final picker = ImagePicker();
-                          final pickedFile = await picker.getImage(source: ImageSource.gallery);
-                          final File file = File(pickedFile!.path);
+                        onPressed: () {
+                          controller.gallery();
                         },
                         child: Column(
                           children: <Widget>[

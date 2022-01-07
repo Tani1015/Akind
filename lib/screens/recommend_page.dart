@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:akindo/screens/post_page.dart';
@@ -23,32 +24,18 @@ class RecommendPage extends GetView<RecommendController>{
           ),
         ],
       ),
-      body: Center(
-        child: Text(
-          "お気に入りのコーデをシェアしよう！",
-          style: TextStyle(
-              fontFamily: "font3",
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color.fromRGBO(87, 93, 107, 1)
+      body:Obx(() =>
+        ListView.builder(
+            itemCount: controller.cardlist.length,
+          itemBuilder: (context, index) => Card(
+            color: Colors.white,
+            child: ListTile(
+              title: Text(controller.cardlist[index].description!),
+              subtitle: Text(controller.cardlist[index].imgurl!),
+            ),
           ),
-        ),
+        )
       ),
-      // floatingActionButton: Padding(
-      //   //floatingActionButton:(
-      //     padding: const EdgeInsets.only(bottom: 70.0),
-      //
-      //     child: FloatingActionButton(
-      //       backgroundColor: Color.fromRGBO(150,100,150,1),
-      //
-      //       child: Icon(Icons.edit),
-      //       onPressed: () {
-      //         Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      //           return PostPage();
-      //         }));
-      //     }),
-      // ),
-
     );
 
   }
