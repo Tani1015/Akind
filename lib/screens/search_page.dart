@@ -10,7 +10,22 @@ class SearchPage extends GetView<SearchController> {
     return Scaffold(
       appBar: AppBar(
         title: Text("検索"),
+        bottom: TabBar(
+          controller: controller.tabController,
+          tabs: [
+            Tab(text:"人気"),
+            Tab(text:"おすすめ"),
+            Tab(text:"カジュアル"),
+            Tab(text:"モード"),
+            Tab(text:"フェミニン"),
+          ],
+        ),
       ),
+      // body: TabBarView(
+      //   controller: controller.tabController,
+      //   children: [
+      //   ],
+      // ),
     );
   }
 }

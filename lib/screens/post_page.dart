@@ -1,5 +1,7 @@
-import 'dart:io';
+import 'dart:convert';
 
+import 'dart:io';
+import 'dart:io' as Io;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -17,6 +19,7 @@ class _PostPagePageState extends State<PostPage> {
 
   final picker = ImagePicker();
   File? _image;
+  String? imgurl;
   TextEditingController _textEditingController = TextEditingController();
   final controller = Get.put(RecommendController());
 
@@ -36,7 +39,8 @@ class _PostPagePageState extends State<PostPage> {
             ),
           ],
       ),
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         children:<Widget>[
           Container(
             width: 400,
@@ -85,6 +89,8 @@ class _PostPagePageState extends State<PostPage> {
                       setState(() {
                         _image = File(pickedFile!.path);
                       });
+                      final bytes = Io.File(pickedFile!.path).readAsBytesSync();
+                      imgurl = base64Encode(bytes);
                     },
                     child: Column(
                       children:<Widget> [
@@ -96,12 +102,13 @@ class _PostPagePageState extends State<PostPage> {
 
           ]),
           SafeArea(
-            child: _image == null? Text('No image') : Image.file(_image!),
+            child: imgurl == null? Text('No image') : Text(imgurl!),
           ),
+
         ]
 
       ),
-
+      )
     );
   }
 }

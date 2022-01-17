@@ -4,12 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ListingItemPage extends GetWidget<ListingController>{
-  static const menu = <String> [
-    'コンサバ',
-    'カジュアル',
-    'フェミニン',
-    'モード'
-  ];
 
   Widget build(BuildContext context){
 
@@ -17,20 +11,48 @@ class ListingItemPage extends GetWidget<ListingController>{
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text("出品ページ")
-      ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            controller.file == null
-                ? Text('No image')
-                : Image.file(controller.file),
+          children: <Widget> [
             SizedBox(height: height * 0.1),
-            TextFormField(
+            Container(
+              width: weight * 0.8,
+              height: height * 0.3,
+              child: controller.file == null
+                  ? Text('No image')
+                  : Image.file(controller.file!),
             ),
-            SizedBox(height: height * 0.1),
-
+              SizedBox(height: height * 0.01),
+              Container(
+                color: Color.fromARGB(9, 0, 0, 0),
+                margin: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: "名前を入力してください"
+                    ),
+                  ),
+                  SizedBox(height: height * 0.01),
+                  Obx( () => DropdownButton(
+                    hint: Text('カテゴリー'),
+                    onChanged: (newValue) {
+                      String newvalue = newValue.toString();
+                      controller.setSelected(newvalue);
+                    },
+                    value: controller.selected.value,
+                    items: controller.menu.map((selectedType) {
+                      return DropdownMenuItem(
+                            child: new Text(selectedType),
+                          value: selectedType,
+                        );
+                      }).toList(),
+                    )
+                  ),
+                ])
+              )
           ],
         )
       ),

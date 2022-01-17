@@ -9,7 +9,7 @@ import 'package:akindo/screens/listing_page.dart';
 import 'package:akindo/screens/recommend_page.dart';
 import 'package:akindo/screens/search_page.dart';
 import 'package:akindo/screens/splash_screen.dart';
-
+import 'package:akindo/screens/listing_item_page.dart';
 
 //バインディングインポート
 import 'package:akindo/providers/binding/bottom_routes_binding.dart';
@@ -24,5 +24,6 @@ class GetRoutes {
     GetPage(name: '/Search', page: () => SearchPage()),
     GetPage(name: '/Listing', page: () => ListingPage()),
     GetPage(name: '/Home', page: () => HomePage()),
+    GetPage(name: '/ListingItem', page: () => ListingItemPage()),
   ];
 }

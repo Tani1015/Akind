@@ -4,17 +4,32 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ListingController extends GetxController{
-  late File file;
+
+  File? file;
+  //dropdownbuttom カテゴリー
+  final List menu = [
+    'コンサバ',
+    'カジュアル',
+    'フェミニン',
+    'モード'
+  ];
+  final selected = "カジュアル".obs;
 
   void gallery() async{
     final picker = ImagePicker();
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    final file = File(pickedFile!.path);
+    this.file = File(pickedFile!.path);
+    Get.toNamed("/ListingItem");
   }
 
   void camera() async{
     final picker = ImagePicker();
     final pickedFile = await picker.getImage(source: ImageSource.camera);
-    final file = File(pickedFile!.path);
+    this.file = File(pickedFile!.path);
+    Get.toNamed("/ListingItem");
+  }
+
+  void setSelected(String value){
+    selected.value = value;
   }
 }

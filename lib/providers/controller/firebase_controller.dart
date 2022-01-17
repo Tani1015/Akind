@@ -45,6 +45,7 @@ class FirebaseController extends GetxController{
   void getID(){
     final currentuser = FirebaseAuth.instance.currentUser;
     if(currentuser != null){
+
       this.uid = currentuser.uid;
     }
   }

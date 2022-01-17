@@ -17,10 +17,13 @@ class ListingPage extends GetWidget<ListingController>{
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text("出品"),
+        backgroundColor: Color.fromRGBO(198, 241, 232, 1)
+      ),
         body: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                SizedBox(height: height * 0.035),
                 Center(
                   child:Container(
 
@@ -55,7 +58,7 @@ class ListingPage extends GetWidget<ListingController>{
                           ],
                         )),
                     TextButton(
-                        onPressed: ()async{
+                        onPressed: () async{
 
                         },
                         child: Column(
