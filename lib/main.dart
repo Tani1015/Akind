@@ -3,13 +3,12 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 //クラスインポート
-import 'package:akindo/screens/first_page.dart';
-import 'screens/login_page.dart';
-import 'screens/signup_page.dart';
 import 'providers/routes/get_routes.dart';
+import 'package:akindo/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget{
       //route管理
       getPages: GetRoutes.pages,
 
-      home: FirstPage(),
+      home: SplashScreen(),
     );
   }
 }
