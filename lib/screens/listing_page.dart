@@ -18,8 +18,9 @@ class ListingPage extends GetWidget<ListingController>{
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("出品"),
-        backgroundColor: Color.fromRGBO(198, 241, 232, 1)
+        title: Text("Akindへ出品"),
+        backgroundColor: Color.fromRGBO(198, 241, 232, 1),
+        centerTitle: true,
       ),
         body: SingleChildScrollView(
             child: Column(
