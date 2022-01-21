@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:akindo/models/users.dart';
 import 'package:akindo/providers/controller/home_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +14,17 @@ class ListingController extends GetxController{
 
   File? file;
   String? imgname;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  late CollectionReference userref;
+
+  TextEditingController  Itemname = TextEditingController();
+  TextEditingController  Price = TextEditingController();
+  TextEditingController  description = TextEditingController();
+  late var uid;
+  String? username;
+  DocumentSnapshot? userdata;
+  RxList<Users> userlist = RxList<Users>([]);
+
   //dropdownbuttom カテゴリー
   final List menu = [
     'コンサバ',
@@ -28,13 +40,12 @@ class ListingController extends GetxController{
 
   final selected = "カジュアル".obs;
   final sexselected = "レディース".obs;
-  TextEditingController  Itemname = TextEditingController();
-  TextEditingController  Price = TextEditingController();
-  TextEditingController  description = TextEditingController();
-  late var uid;
+
 
   void onInit() {
     getID();
+    userref = firestore.collection("Users");
+    getUser();
   }
 
   void getID(){
@@ -42,16 +53,27 @@ class ListingController extends GetxController{
     this.uid = currentuser!.uid;
   }
 
+  Future<String?> getUser() async {
+    DocumentReference documentReference = userref.doc(uid);
+    await documentReference.get().then((snapshot) {
+      username = snapshot.get('Full Name');
+    });
+    return username;
+  }
+      // userref.snapshots().map((query) =>
+      //     query.docs.map((item) => Users.fromMap(item)).toList());
+
   void senditems() async{
     Map<String,dynamic> Itemdata = {
       "itemname": Itemname.text,
+      "username": username,
       "category": selected.value,
       "sex" : sexselected.value,
       "price": Price.text,
       "description": description.text,
       "itemimg": imgname,
       "id": uid,
-      "createdAt": DateTime.now()
+      "createdAt": DateTime.now(),
     };
     await FirebaseFirestore.instance.collection("items").doc().set(Itemdata);
   }

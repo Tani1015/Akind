@@ -71,10 +71,9 @@ class ListingPage extends GetWidget<ListingController>{
                   ],
                 )
               ],
-            )
-        )
+            ),
+        ),
     );
-
     throw UnimplementedError();
   }
 

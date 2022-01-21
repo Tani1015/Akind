@@ -1,3 +1,4 @@
+import 'package:akindo/models/item_card.dart';
 import 'package:akindo/models/recommend_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,6 +16,7 @@ class RecommendController extends GetxController{
   final picker = ImagePicker();
   String? imgdl;
   RxList<RecommendCard> cardlist = RxList<RecommendCard>([]);
+
 
   void onInit(){
     super.onInit();
