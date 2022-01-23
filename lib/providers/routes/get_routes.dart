@@ -2,6 +2,7 @@ import 'package:akindo/providers/routes/bottom_routes.dart';
 import 'package:get/get.dart';
 
 //クラスインポート
+import 'package:akindo/screens/select_item_page.dart';
 import 'package:akindo/screens/login_page.dart';
 import 'package:akindo/screens/signup_page.dart';
 import 'package:akindo/screens/home_page.dart';
@@ -25,5 +26,6 @@ class GetRoutes {
     GetPage(name: '/Listing', page: () => ListingPage()),
     GetPage(name: '/Home', page: () => HomePage()),
     GetPage(name: '/ListingItem', page: () => ListingItemPage()),
+    GetPage(name: '/Item', page: () => SelectItemPage()),
   ];
 }

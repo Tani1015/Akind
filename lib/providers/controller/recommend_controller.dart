@@ -40,6 +40,17 @@ class RecommendController extends GetxController{
     };
 
     await FirebaseFirestore.instance.collection("posts").doc().set(postdata);
+    cardlist.refresh();
+  }
+
+  void sendmypost(String description,String imageurl) async{
+    Map<String,dynamic> postdata = {
+      "description": description,
+      "imgurl": imageurl,
+      "id": uid,
+      "createdAt": DateTime.now()
+    };
+    await FirebaseFirestore.instance.collection("Users").doc(uid).collection("post").doc().set(postdata);
   }
 
   Stream<List<RecommendCard>> getPosts() =>

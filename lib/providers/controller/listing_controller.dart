@@ -78,6 +78,21 @@ class ListingController extends GetxController{
     await FirebaseFirestore.instance.collection("items").doc().set(Itemdata);
   }
 
+  void sendmyitems() async{
+    Map<String,dynamic> Itemdata = {
+      "itemname": Itemname.text,
+      "username": username,
+      "category": selected.value,
+      "sex" : sexselected.value,
+      "price": Price.text,
+      "description": description.text,
+      "itemimg": imgname,
+      "id": uid,
+      "createdAt": DateTime.now(),
+    };
+    await FirebaseFirestore.instance.collection("Users").doc(uid).collection("items").doc().set(Itemdata);
+  }
+
   Future<void> uploaditemFiles() async{
     final FirebaseStorage storage = FirebaseStorage.instance;
     Reference ref = storage.ref().child("itemimg");

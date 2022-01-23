@@ -112,6 +112,7 @@ class ListingItemPage extends GetWidget<ListingController>{
                   onPressed: () {
                     //出品
                     controller.senditems();
+                    controller.sendmyitems();
                     controller.uploaditemFiles();
                     Get.offAllNamed("/Routes");
                   },

@@ -40,6 +40,7 @@ class _PostPagePageState extends State<PostPage> {
             icon: Icon(Icons.edit),
             onPressed: () {
               controller.sendpost(_textEditingController.text, imgname!);
+              controller.sendmypost(_textEditingController.text, imgname!);
               controller.uploadFiles(imgname!,_image!);
               Get.offAllNamed("/Routes");
             },

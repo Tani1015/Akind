@@ -35,14 +35,14 @@ class SearchPage extends GetView<SearchController> {
       body: Obx(() =>
           GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1.0,
+                crossAxisCount: 3,
+                childAspectRatio: 0.75,
               ),
               itemCount: controller.searchList.length,
             itemBuilder: (context, index){
                 return GestureDetector(
                     onTap:(){
-                      print(index);
+                      Get.toNamed("/Item", arguments:index);
                     },
                     child: Column(
                       children: <Widget>[
@@ -65,17 +65,17 @@ class SearchPage extends GetView<SearchController> {
                             }
                         ),
                       ),
-                      Row(
-                        children: <Widget>[
-                          SizedBox(width:  weight * 0.2,),
-                          Text(controller.searchList[index].price!,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.red
-                              )),
-                          Text("円　/　週"),
-                        ],
-                      )
+                      // Row(
+                      //   children: <Widget>[
+                      //     SizedBox(width:  weight * 0.2,),
+                      //     Text(controller.searchList[index].price!,
+                      //         style: TextStyle(
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.red
+                      //         )),
+                      //     Text("円　/　週"),
+                      //   ],
+                      // )
                   ])
                 );
           })
