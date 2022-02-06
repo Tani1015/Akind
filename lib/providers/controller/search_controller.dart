@@ -10,6 +10,8 @@ class SearchController extends GetxController with SingleGetTickerProviderMixin{
   RxList<ItemCard> searchList = RxList<ItemCard>([]);
   String? imgdl;
   late var uid;
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  late CollectionReference query;
 
   void onInit() {
     super.onInit();
@@ -27,14 +29,42 @@ class SearchController extends GetxController with SingleGetTickerProviderMixin{
           query.docs.map((item) => ItemCard.fromMap(item.data())).toList());
   }
 
-  Future<List<ItemCard>> getsearch(String search) {
-    searchList.clear();
-    return FirebaseFirestore.instance.collection("items").where("itemname", isGreaterThanOrEqualTo: search).where("itemname", isLessThanOrEqualTo: "$search\uf7ff")
-        .get().then((data) =>
-          searchList.value = data.docs.map((searchdata) =>
-              ItemCard.fromMap(searchdata.data())
-          ).toList());
+  List searchword = [];
+
+  void sepword(String keyword){
+    String modelkey = keyword.replaceAll(RegExp(r'\s'),'');
+    for(var i = 0; i < modelkey.length-1; i++){
+      String key = modelkey.substring(i, i+2);
+      searchword.add(key);
+    }
   }
+
+  // Future<List<ItemCard>> getsearch(String search) {
+  //   searchList.clear();
+  //   return FirebaseFirestore.instance.collection("items").where("itemname", isGreaterThanOrEqualTo: search).where("itemname", isLessThanOrEqualTo: "$search\uf7ff")
+  //       .get().then((data) =>
+  //         searchList.value = data.docs.map((searchdata) =>
+  //             ItemCard.fromMap(searchdata.data())
+  //         ).toList());
+  // }
+
+  void getsearch(String word) async{
+    searchList.clear();
+    searchword.clear();
+    sepword(word);
+    return searchword.forEach((word) {
+      FirebaseFirestore.instance.collection("items").where('searchkey.${word}', isEqualTo: true)
+          .get().then((data) =>
+      searchList.value = data.docs.map((searchdata) =>
+          ItemCard.fromMap(searchdata.data())
+      ).toList());
+    });
+  }
+
+  //searchword.forEach((word) {
+  //   query.where('searchkey.${word}', isEqualTo: true);
+  //   })
+
 
   Future<String?> getitemimg(String imgurl) async {
     FirebaseStorage storage = FirebaseStorage.instance;

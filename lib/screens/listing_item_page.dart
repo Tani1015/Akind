@@ -111,6 +111,7 @@ class ListingItemPage extends GetWidget<ListingController>{
                 child: TextButton(
                   onPressed: () {
                     //出品
+                    controller.sepword(controller.Itemname.text);
                     controller.senditems();
                     controller.sendmyitems();
                     controller.uploaditemFiles();

@@ -63,7 +63,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin{
 
   Stream<List<ItemCard>> getmyRentals() =>
       FirebaseFirestore.instance.collection("Users").doc(uid)
-          .collection("rentals").snapshots().map((query) =>
+          .collection("rentals").orderBy("createdAt", descending: true).snapshots().map((query) =>
           query.docs.map((item) => ItemCard.fromMap(item.data())).toList());
 
   Future<String?> getitemimg(String imgurl) async {
