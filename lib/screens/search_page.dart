@@ -45,6 +45,7 @@ class SearchPage extends GetView<SearchController> {
                       Get.toNamed("/Item", arguments:index);
                     },
                     child: Column(
+
                       children: <Widget>[
                         SizedBox(height:  height * 0.01),
                       Card(
@@ -57,8 +58,6 @@ class SearchPage extends GetView<SearchController> {
                                   height:  height * 0.2,
                                   child: CachedNetworkImage(imageUrl:snapshot.data!),
                                 );
-                              }else if(snapshot.hasError){
-                                return Text('Error');
                               }else {
                                 return CircularProgressIndicator();
                               }

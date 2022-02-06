@@ -69,6 +69,10 @@ class ListingPage extends GetWidget<ListingController>{
                           ],
                         )),
                   ],
+                ),
+                SizedBox(height: height * 0.05),
+                Center(
+                  child: Image.asset('images/listing_img.JPG'),
                 )
               ],
             ),

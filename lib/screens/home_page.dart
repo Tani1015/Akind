@@ -32,7 +32,7 @@ class HomePage extends GetWidget<HomeController> {
               width: weight, // sizeをMediaQuery.of(context).sizeなどで定義しておく
             ),
             Positioned(
-              top: height * 0.05,
+              top: height * 0.01,
               left: weight * 0.06,
               child: CircleAvatar(
                 radius: 40,

@@ -37,13 +37,13 @@ class MyListingPage extends GetWidget<HomeController> {
                     title: Text(controller.mylistinglist[index].itemname!,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 30
+                        fontSize: 22
                       ),
                     ),
-                    subtitle: Text("￥ ${controller.mylistinglist[index].price!}",
+                    subtitle: Text("￥ ${controller.mylistinglist[index].price!} / 週",
                       style: TextStyle(
-                        fontSize: 35,
-                        color: Colors.red
+                        fontSize: 26,
+                        color: Colors.redAccent
                       ),
                     ),
                   )

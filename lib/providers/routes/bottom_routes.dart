@@ -35,8 +35,9 @@ class BottomRoutes extends StatelessWidget{
             currentIndex: controller.tappedIndex,
             onTap: controller.changeTabIndex,
             items: floatingNavigationItem,
-            dotIndicatorColor: Colors.redAccent,
-            backgroundColor: Colors.black12,
+            dotIndicatorColor: Colors.red,
+            unselectedItemColor: Colors.white,
+            backgroundColor: Colors.black26,
           )
         );
       }

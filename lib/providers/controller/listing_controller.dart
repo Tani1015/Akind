@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as path;
@@ -60,12 +61,22 @@ class ListingController extends GetxController{
     });
     return username;
   }
-      // userref.snapshots().map((query) =>
-      //     query.docs.map((item) => Users.fromMap(item)).toList());
+
+  Map<String,bool> searchkey = {};
+
+  void sepword(String keyword){
+    String modelkey = keyword.replaceAll(RegExp(r'\s'),'');
+    for(var i = 0; i < modelkey.length-1; i++){
+      String key = modelkey.substring(i, i+2);
+      searchkey['$key'] = true;
+    }
+  }
+
 
   void senditems() async{
     Map<String,dynamic> Itemdata = {
       "itemname": Itemname.text,
+      "searchkey": searchkey,
       "username": username,
       "category": selected.value,
       "sex" : sexselected.value,

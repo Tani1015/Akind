@@ -37,13 +37,13 @@ class MyRentalPage extends GetWidget<HomeController> {
                           title: Text(controller.myrentallist[index].itemname!,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 30
+                                fontSize: 22
                             ),
                           ),
                           subtitle: Text("￥ ${controller.myrentallist[index].price!}",
                             style: TextStyle(
-                                fontSize: 35,
-                                color: Colors.red
+                                fontSize: 26,
+                                color: Colors.redAccent
                             ),
                           ),
                         )

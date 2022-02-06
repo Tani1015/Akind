@@ -76,6 +76,10 @@ class SelectItemPage extends GetWidget<SearchController> {
                   ),
                   SizedBox(height: height * 0.01,),
                   Container(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 6.0,
+                      horizontal: 20.0
+                    ),
                       child: Text(controller.searchList[index].description!,
                         style: TextStyle(
                           fontSize: 20

@@ -38,11 +38,13 @@ class _PostPagePageState extends State<PostPage> {
         actions: [
           IconButton(
             icon: Icon(Icons.edit),
-            onPressed: () {
+            onPressed: () async {
               controller.sendpost(_textEditingController.text, imgname!);
               controller.sendmypost(_textEditingController.text, imgname!);
               controller.uploadFiles(imgname!,_image!);
-              Get.offAllNamed("/Routes");
+              controller.cardlist.refresh();
+              controller.update();
+              await Get.offAllNamed("/Routes");
             },
           ),
         ],

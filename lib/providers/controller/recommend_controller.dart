@@ -1,5 +1,6 @@
 import 'package:akindo/models/item_card.dart';
 import 'package:akindo/models/recommend_card.dart';
+import 'package:akindo/models/users.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -16,6 +17,9 @@ class RecommendController extends GetxController{
   final picker = ImagePicker();
   String? imgdl;
   RxList<RecommendCard> cardlist = RxList<RecommendCard>([]);
+  RxList<Users> user = RxList<Users>([]);
+  late CollectionReference userref;
+  String? username;
 
 
   void onInit(){
@@ -40,7 +44,6 @@ class RecommendController extends GetxController{
     };
 
     await FirebaseFirestore.instance.collection("posts").doc().set(postdata);
-    cardlist.refresh();
   }
 
   void sendmypost(String description,String imageurl) async{
@@ -64,7 +67,6 @@ class RecommendController extends GetxController{
 
     try{
       await task;
-      this.cardlist.refresh();
     }catch(FirebaseException){
       //エラー処理
     }
