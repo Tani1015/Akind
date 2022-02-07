@@ -20,6 +20,8 @@ class RecommendController extends GetxController{
   RxList<Users> user = RxList<Users>([]);
   late CollectionReference userref;
   String? username;
+  RxBool likebutton = false.obs;
+  RxBool favoritebutton = false.obs;
 
 
   void onInit(){

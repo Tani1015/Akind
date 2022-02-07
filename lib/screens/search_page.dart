@@ -59,7 +59,7 @@ class SearchPage extends GetView<SearchController> {
                                   child: CachedNetworkImage(imageUrl:snapshot.data!),
                                 );
                               }else {
-                                return Text("");
+                                return CircularProgressIndicator();
                               }
                             }
                         ),

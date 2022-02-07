@@ -110,6 +110,50 @@ class RecommendPage extends GetView<RecommendController>{
                           }
                       ),
                     ),
+                    Row(
+                      children: <Widget>[
+                        Obx (() => IconButton(
+                            onPressed: (){
+                              controller.likebutton.value = !controller.likebutton.value;
+                            },
+                            icon: controller.likebutton.value == true
+                                ? Icon(
+                                    Icons.favorite,
+                                    color:  Colors.red,
+                                  )
+                                : Icon(
+                                    Icons.favorite_border
+                                ),
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.comment),
+                        ),
+                        IconButton(
+                            onPressed: (){},
+                            icon: Icon(Icons.send),
+                        ),
+                        Expanded(
+                            child: Align(
+                              alignment: Alignment.bottomRight,
+                              child: Obx(() => IconButton(
+                                onPressed: (){
+                                  controller.favoritebutton.value = !controller.favoritebutton.value;
+                                },
+                                icon: controller.favoritebutton.value == true
+                                  ? Icon(
+                                      Icons.star,
+                                      color: Colors.yellowAccent,
+                                    )
+                                  : Icon(
+                                      Icons.star_border
+                                    )
+                              )),
+                            )
+                        ),
+                      ],
+                    ),
                     ListTile(
                       title: Text(controller.cardlist[index].description!),
                     ),
