@@ -37,9 +37,10 @@ dependencies:
   sign_button:
   dot_navigation_bar: ^1.0.1+3
   animated_splash_screen: ^1.1.0
-
+  firebase_storage:
   path_provider:
   image_picker:
+  cached_network_image:
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +62,7 @@ flutter:
     - images/icon&logo.png
     - images/bar_code.png
     - images/bar.png
+    - images/listing_img.JPG
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

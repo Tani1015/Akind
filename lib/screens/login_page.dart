@@ -40,44 +40,8 @@ class LoginPage extends GetWidget<FirebaseController>{
                       child: Image.asset('images/icon&logo.png'),
                     ),
                   ),
-
                   SizedBox(height: 50),
-
-                  //以下フェードインアニメーション　ログイン文字
-                  // FadeAnimation(
-                  //   delay: 2,
-                  //   child:Container(
-                  //     margin: const EdgeInsets.only(right: 230.0),
-                  //     child: Text("ログイン",
-                  //       style: TextStyle(
-                  //         fontWeight: FontWeight.bold,
-                  //         fontSize: 30.0,
-                  //         letterSpacing: 0.5
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                  //
-                  // SizedBox(
-                  //   height: height * 0.005,
-                  // ),
-                  //
-                  // FadeAnimation(
-                  //   delay: 2,
-                  //   child: Container(
-                  //     margin: const EdgeInsets.only(right: 146.0),
-                  //     child: Text("ユーザ情報を入力してください",
-                  //         style: TextStyle(
-                  //             letterSpacing: 0.5
-                  //         ),
-                  //     ),
-                  //   ),
-                  // ),
-
-                  SizedBox(
-                    height: height * 0.03,
-                  ),
-
+                  SizedBox(height: height * 0.03,),
                   FadeAnimation(
                     delay: 2,
                     child: Container(
