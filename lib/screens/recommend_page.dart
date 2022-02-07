@@ -10,9 +10,8 @@ import 'package:akindo/providers/controller/recommend_controller.dart';
 
 class RecommendPage extends GetView<RecommendController>{
   @override
-
   Widget build(BuildContext context) {
-    final weight = MediaQuery.of(context).size.width;
+
     final height = MediaQuery.of(context).size.height;
     CollectionReference users = FirebaseFirestore.instance.collection('Users');
 
@@ -86,7 +85,7 @@ class RecommendPage extends GetView<RecommendController>{
                           ),
                           IconButton(
                               onPressed: (){
-                                
+                                print("popupmenuで編集");
                               },
                               icon: Icon(Icons.more_vert)
                           ),

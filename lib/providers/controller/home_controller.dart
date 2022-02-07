@@ -53,12 +53,12 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin{
 
   Stream<List<RecommendCard>> getmyPosts() =>
     FirebaseFirestore.instance.collection("Users").doc(uid)
-        .collection("post").snapshots().map((query) =>
+        .collection("post").orderBy("createdAt", descending: true).snapshots().map((query) =>
         query.docs.map((item) => RecommendCard.fromMap(item)).toList());
 
   Stream<List<ItemCard>> getmyItems() =>
       FirebaseFirestore.instance.collection("Users").doc(uid)
-          .collection("items").snapshots().map((query) =>
+          .collection("items").orderBy("createdAt", descending: true).snapshots().map((query) =>
           query.docs.map((item) => ItemCard.fromMap(item.data())).toList());
 
   Stream<List<ItemCard>> getmyRentals() =>
