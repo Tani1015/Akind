@@ -1,5 +1,3 @@
-import 'package:akindo/models/item_card.dart';
-import 'package:akindo/models/recommend_card.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,6 +6,9 @@ import 'package:get/get.dart';
 
 //クラスインポート
 import 'package:akindo/models/users.dart';
+import 'package:akindo/models/item_card.dart';
+import 'package:akindo/models/recommend_card.dart';
+import 'package:akindo/models/likelist.dart';
 
 class HomeController extends GetxController with SingleGetTickerProviderMixin{
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -27,6 +28,8 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin{
   RxList<RecommendCard> mycardlist = RxList<RecommendCard>([]);
   RxList<ItemCard> mylistinglist = RxList<ItemCard>([]);
   RxList<ItemCard> myrentallist = RxList<ItemCard>([]);
+  // RxList<Likelist> mylikelist = RxList<Likelist>([]);
+  RxList mylikelist = [].obs;
 
 
   void onInit() {
@@ -37,11 +40,28 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin{
     mycardlist.bindStream(getmyPosts());
     mylistinglist.bindStream(getmyItems());
     myrentallist.bindStream(getmyRentals());
+    // mylikelist.bindStream(getmylikelist());
+    getmylike();
   }
 
   void getID(){
     final currentuser = FirebaseAuth.instance.currentUser;
     this.uid = currentuser!.uid;
+  }
+
+  // Stream<List<Likelist>> getmylikelist() =>
+  //     FirebaseFirestore.instance.collection("Users").doc(uid)
+  //         .collection("like").snapshots().map((query) =>
+  //         query.docs.map((item) => Likelist.fromMap(item.data())).toList());
+
+  RxList<dynamic> getmylike(){
+    FirebaseFirestore.instance.collection("Users").doc(uid)
+        .collection("like").get().then((query) =>
+          query.docs.forEach((doc) {
+            mylikelist.add(doc.id);
+          })
+        );
+    return mylikelist;
   }
 
   Future<String?> getimg(String imgurl) async {

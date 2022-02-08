@@ -1,3 +1,4 @@
+import 'package:akindo/providers/controller/home_controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,7 @@ class RecommendPage extends GetView<RecommendController>{
   Widget build(BuildContext context) {
 
     final height = MediaQuery.of(context).size.height;
+    final homecontroller = Get.put(HomeController());
     CollectionReference users = FirebaseFirestore.instance.collection('Users');
 
     return Scaffold(
@@ -112,10 +114,20 @@ class RecommendPage extends GetView<RecommendController>{
                     Row(
                       children: <Widget>[
                         Obx (() => IconButton(
-                            onPressed: (){
-                              controller.likebutton.value = !controller.likebutton.value;
+                            onPressed: () async {
+                              if(homecontroller.mylikelist.contains(controller.cardlist[index].postid) == true){
+                                if(controller.cardlist[index].postid != null) {
+                                  controller.deletelikeuser(controller.cardlist[index].postid!);
+                                  print(homecontroller.mylikelist);
+                                }
+                              }else if(homecontroller.mylikelist.contains(controller.cardlist[index].postid) == false){
+                                if(controller.cardlist[index].postid != null) {
+                                  controller.addlikeuser(controller.cardlist[index].postid!);
+                                  print(homecontroller.mylikelist);
+                                }
+                              }
                             },
-                            icon: controller.likebutton.value == true
+                            icon: homecontroller.mylikelist.contains(controller.cardlist[index].postid) == true
                                 ? Icon(
                                     Icons.favorite,
                                     color:  Colors.red,
