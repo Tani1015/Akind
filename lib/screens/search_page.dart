@@ -64,17 +64,6 @@ class SearchPage extends GetView<SearchController> {
                             }
                         ),
                       ),
-                      // Row(
-                      //   children: <Widget>[
-                      //     SizedBox(width:  weight * 0.2,),
-                      //     Text(controller.searchList[index].price!,
-                      //         style: TextStyle(
-                      //             fontWeight: FontWeight.bold,
-                      //             color: Colors.red
-                      //         )),
-                      //     Text("円　/　週"),
-                      //   ],
-                      // )
                   ])
                 );
           })

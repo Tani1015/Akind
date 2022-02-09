@@ -29,7 +29,7 @@ class HomePage extends GetWidget<HomeController> {
           background: Stack(children: [
             SizedBox(
               height: height * 0.2,
-              width: weight, // sizeをMediaQuery.of(context).sizeなどで定義しておく
+              width: weight,
             ),
             Positioned(
               top: height * 0.01,
@@ -53,6 +53,12 @@ class HomePage extends GetWidget<HomeController> {
             return Text("loading");
           },
         ),
+        actions: [
+          IconButton(
+              onPressed: (){}, 
+              icon: Icon(Icons.settings)
+          )
+        ],
         bottom: TabBar(
           tabs:controller.tabs,
           controller: controller.tabController,
@@ -69,3 +75,4 @@ class HomePage extends GetWidget<HomeController> {
     );
   }
 }
+

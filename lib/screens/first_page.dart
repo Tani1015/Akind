@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FirstPage extends StatelessWidget{
-  final colors = <Color>[Colors.lime,Colors.pink, Colors.purple];
   Widget build(BuildContext context){
 
     return Scaffold(
       body: buildFirstPage(context),
       backgroundColor: Color.fromRGBO(198, 241, 232, 1),
-
     );
   }
 
   buildFirstPage(BuildContext context){
-
-
 
     return SafeArea(
         child: Column(
