@@ -118,12 +118,10 @@ class RecommendPage extends GetView<RecommendController>{
                               if(homecontroller.mylikelist.contains(controller.cardlist[index].postid) == true){
                                 if(controller.cardlist[index].postid != null) {
                                   controller.deletelikeuser(controller.cardlist[index].postid!);
-                                  print(homecontroller.mylikelist);
                                 }
                               }else if(homecontroller.mylikelist.contains(controller.cardlist[index].postid) == false){
                                 if(controller.cardlist[index].postid != null) {
                                   controller.addlikeuser(controller.cardlist[index].postid!);
-                                  print(homecontroller.mylikelist);
                                 }
                               }
                             },
@@ -143,7 +141,7 @@ class RecommendPage extends GetView<RecommendController>{
                         ),
                         IconButton(
                             onPressed: (){},
-                            icon: Icon(Icons.send),
+                            icon: Icon(Icons.share),
                         ),
                         Expanded(
                             child: Align(
