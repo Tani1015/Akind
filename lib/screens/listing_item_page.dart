@@ -135,12 +135,6 @@ class ListingItemPage extends GetWidget<ListingController>{
           ],
         )
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          controller.sepword(controller.Itemname.text);
-          print(controller.searchkey);
-        },
-      ),
     );
   }
 }
